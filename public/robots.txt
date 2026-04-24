@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and api routes
+Disallow: /api/
+Disallow: /admin/
+
+# Disallow checkout confirmation pages with sensitive data
+Disallow: /checkout/confirmation/
+
+# Sitemap
+Sitemap: https://lambodarcreation.com/sitemap.xml
+
+# Crawl delay (optional, be considerate)
+Crawl-delay: 1
