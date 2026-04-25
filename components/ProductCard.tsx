@@ -53,7 +53,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative aspect-[3/4] bg-primary-50 overflow-hidden mb-4">
+      <div className="relative aspect-[3/4] bg-neutral-100 overflow-hidden mb-3">
         {product.image ? (
           <Image
             src={product.image}
@@ -63,57 +63,52 @@ export default function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-primary-100">
-            <span className="text-primary-400 text-sm">No Image</span>
+          <div className="absolute inset-0 flex items-center justify-center bg-neutral-100">
+            <span className="text-neutral-400 text-xs">No Image</span>
           </div>
         )}
         
-        {/* Hover Overlay */}
         <div 
-          className={`absolute inset-0 bg-black/40 flex items-center justify-center gap-3 transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-neutral-900/30 flex items-center justify-center gap-2 transition-opacity duration-300 ${
             isHovered ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <button
             onClick={handleQuickAdd}
-            className="p-3 bg-white rounded-full hover:bg-accent hover:text-white transition-colors"
+            className="p-2.5 bg-white rounded-full hover:bg-brand-500 hover:text-white transition-colors duration-300"
             aria-label="Quick add to cart"
           >
-            <ShoppingBag className="w-5 h-5" />
+            <ShoppingBag className="w-4 h-4" />
           </button>
           <button
-            className="p-3 bg-white rounded-full hover:bg-accent hover:text-white transition-colors"
+            className="p-2.5 bg-white rounded-full hover:bg-brand-500 hover:text-white transition-colors duration-300"
             aria-label="Quick view"
           >
-            <Eye className="w-5 h-5" />
+            <Eye className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Sale Badge */}
-        <div className="absolute top-3 left-3 bg-accent text-white text-xs font-medium px-3 py-1 uppercase">
+        <div className="absolute top-3 left-3 badge-new">
           New
         </div>
       </div>
 
       <div>
         {product.category && (
-          <p className="text-xs text-primary-500 uppercase tracking-wider mb-1">
+          <p className="text-xs text-neutral-400 uppercase tracking-wider mb-1">
             {product.category}
           </p>
         )}
-        <h3 className="text-sm font-medium text-primary-900 group-hover:text-accent transition-colors line-clamp-1">
+        <h3 className="text-sm font-medium text-neutral-800 group-hover:text-brand-600 transition-colors line-clamp-1">
           {product.name}
         </h3>
-        <div className="flex items-center gap-2 mt-2">
-          <span className="text-primary-900 font-medium">
-            ₹{product.price.toLocaleString()}
-          </span>
-        </div>
+        <p className="text-sm font-medium text-neutral-900 mt-1">
+          ₹{product.price.toLocaleString()}
+        </p>
         
-        {/* Size Options */}
         {product.sizes && (
           <div 
-            className={`flex gap-1 mt-3 transition-opacity duration-300 ${
+            className={`flex gap-1 mt-2 transition-opacity duration-300 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
             onClick={(e) => e.preventDefault()}
@@ -126,17 +121,17 @@ export default function ProductCard({ product }: ProductCardProps) {
                   e.stopPropagation()
                   setSelectedSize(size)
                 }}
-                className={`w-8 h-8 text-xs font-medium border transition-colors ${
+                className={`w-7 h-7 text-xs font-medium border transition-colors duration-200 ${
                   selectedSize === size
-                    ? 'border-accent bg-accent text-white'
-                    : 'border-primary-300 hover:border-primary-900'
+                    ? 'border-brand-500 bg-brand-500 text-white'
+                    : 'border-neutral-200 hover:border-neutral-800'
                 }`}
               >
                 {size}
               </button>
             ))}
             {product.sizes.length > 4 && (
-              <span className="w-8 h-8 text-xs flex items-center justify-center text-primary-500">
+              <span className="w-7 h-7 flex items-center justify-center text-xs text-neutral-400">
                 +{product.sizes.length - 4}
               </span>
             )}

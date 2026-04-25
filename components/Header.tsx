@@ -37,25 +37,16 @@ export default function Header() {
 
   const cartCount = mounted ? getTotalItems() : 0
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' 
-          : 'bg-white py-5'
+          ? 'bg-white/95 backdrop-blur-md shadow-soft py-3' 
+          : 'bg-white py-4'
       }`}
     >
       <nav className="container-custom">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="relative z-10">
             <Image
               src="https://lambodarcreation.com/wp-content/uploads/2023/02/lc_logo-removebg-preview-120x120.png"
@@ -66,8 +57,7 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-10">
             {navigation.map((item) => (
               <div 
                 key={item.name}
@@ -77,20 +67,20 @@ export default function Header() {
               >
                 <Link 
                   href={item.href}
-                  className="flex items-center gap-1 text-sm font-medium text-primary-900 hover:text-accent transition-colors duration-200 tracking-wide uppercase"
+                  className="flex items-center gap-1 text-sm font-medium text-neutral-700 hover:text-neutral-900 transition-colors duration-200 tracking-wide uppercase"
                 >
                   {item.name}
-                  {item.children && <ChevronDown className="w-4 h-4" />}
+                  {item.children && <ChevronDown className="w-3.5 h-3.5" />}
                 </Link>
                 
                 {item.children && openDropdown === item.name && (
                   <div className="absolute top-full left-0 pt-2">
-                    <div className="bg-white shadow-xl rounded-sm py-3 min-w-[200px] animate-slide-down">
+                    <div className="bg-white shadow-soft-lg rounded py-2 min-w-[180px] animate-fade-in">
                       {item.children.map((child) => (
                         <Link
                           key={child.name}
                           href={child.href}
-                          className="block px-5 py-2 text-sm text-primary-700 hover:bg-primary-50 hover:text-primary-900 transition-colors"
+                          className="block px-5 py-2 text-sm text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 transition-colors"
                         >
                           {child.name}
                         </Link>
@@ -102,55 +92,51 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Right Actions */}
-          <div className="flex items-center gap-4">
-            {/* Cart Button */}
+          <div className="flex items-center gap-5">
             <button
               onClick={toggleCart}
-              className="relative p-2 text-primary-900 hover:text-accent transition-colors"
+              className="relative p-2 text-neutral-700 hover:text-neutral-900 transition-colors"
               aria-label="Shopping cart"
             >
-              <ShoppingBag className="w-6 h-6" />
+              <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs font-medium rounded-full flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-brand-500 text-white text-xs font-medium rounded-full flex items-center justify-center">
                   {cartCount > 9 ? '9+' : cartCount}
                 </span>
               )}
             </button>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-primary-900"
+              className="lg:hidden p-2 text-neutral-700"
               aria-label="Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-primary-100 shadow-lg animate-slide-down">
-            <div className="container-custom py-6">
-              <div className="space-y-4">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-neutral-100 shadow-soft-lg animate-fade-in">
+            <div className="container-custom py-5">
+              <div className="space-y-1">
                 {navigation.map((item) => (
                   <div key={item.name}>
                     <Link
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-lg font-medium text-primary-900 py-2"
+                      className="block text-sm font-medium text-neutral-700 py-3 hover:text-neutral-900"
                     >
                       {item.name}
                     </Link>
                     {item.children && (
-                      <div className="pl-4 space-y-2 mt-2 border-l-2 border-primary-200">
+                      <div className="pl-4 border-l border-neutral-200 ml-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.name}
                             href={child.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="block text-sm text-primary-600 hover:text-primary-900 py-1"
+                            className="block text-sm text-neutral-500 py-2 hover:text-neutral-900"
                           >
                             {child.name}
                           </Link>

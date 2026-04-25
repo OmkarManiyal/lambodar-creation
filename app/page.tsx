@@ -116,22 +116,22 @@ export default function HomePage() {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-primary-50" />
-        <div className="container-custom relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative min-h-[85vh] flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-50 to-warm-50" />
+        <div className="container-custom relative z-10 py-16">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="max-w-xl animate-fade-in">
-              <span className="inline-block text-accent text-sm font-medium tracking-widest uppercase mb-4">
+              <span className="inline-block text-brand-600 text-xs font-medium tracking-[0.2em] uppercase mb-4">
                 New Collection Live Now
               </span>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-primary-900 leading-tight text-balance">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-neutral-900 leading-tight text-balance">
                 Shop the Latest Trends Today!
               </h1>
-              <p className="text-lg text-primary-600 mt-6 max-w-lg">
+              <p className="text-neutral-500 mt-5 max-w-lg leading-relaxed">
                 Explore our curated collection and stay ahead of the fashion curve. 
                 Shop the latest trends at your fingertips.
               </p>
-              <div className="flex flex-wrap gap-4 mt-10">
+              <div className="flex flex-wrap gap-4 mt-8">
                 <Link href="/shop" className="btn-primary">
                   Shop New Collection
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -147,16 +147,16 @@ export default function HomePage() {
                   src="https://lambodarcreation.com/wp-content/uploads/2023/12/glasses-category-img-2.jpg"
                   alt="Fashion collection showcase"
                   fill
-                  className="object-cover rounded-l-full"
+                  className="object-cover rounded-lg"
                   priority
                 />
               </div>
-              <div className="absolute -bottom-10 -left-10 w-48 h-48">
+              <div className="absolute -bottom-8 -left-8 w-40 h-40">
                 <Image
                   src="https://lambodarcreation.com/wp-content/uploads/2024/02/e0cb6e9d-image1.png"
                   alt="Featured shirt"
                   fill
-                  className="object-cover rounded-full border-4 border-white shadow-xl"
+                  className="object-cover rounded-full border-4 border-white shadow-soft-lg"
                 />
               </div>
             </div>
@@ -165,17 +165,17 @@ export default function HomePage() {
       </section>
 
       {/* Features Bar */}
-      <section className="bg-primary-900 text-white py-8">
+      <section className="bg-neutral-900 text-white py-8">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <div key={index} className="flex items-center justify-center gap-4">
-                <div className="w-14 h-14 bg-primary-800 rounded-full flex items-center justify-center flex-shrink-0">
-                  <feature.icon className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 bg-neutral-800 rounded-full flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="w-5 h-5 text-brand-400" />
                 </div>
                 <div>
-                  <h3 className="font-medium">{feature.title}</h3>
-                  <p className="text-sm text-primary-300">{feature.description}</p>
+                  <h3 className="font-medium text-sm">{feature.title}</h3>
+                  <p className="text-xs text-neutral-400">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -184,31 +184,31 @@ export default function HomePage() {
       </section>
 
       {/* Collections */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <h2 className="section-title">Our Collections</h2>
             <p className="section-subtitle mx-auto">
               Discover our curated categories of premium men's fashion
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {collections.map((collection) => (
               <Link
                 key={collection.name}
                 href={collection.href}
-                className="group relative aspect-[3/4] overflow-hidden bg-primary-50 card-hover"
+                className="group relative aspect-[3/4] overflow-hidden bg-neutral-100 card-hover"
               >
                 <Image
                   src={collection.image}
                   alt={collection.name}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-neutral-900/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="font-medium text-lg">{collection.name}</h3>
-                  <p className="text-sm text-white/80">
+                  <h3 className="font-medium text-sm">{collection.name}</h3>
+                  <p className="text-xs text-white/80 mt-0.5">
                     {collection.count > 0 ? `${collection.count} Products` : 'Coming Soon'}
                   </p>
                 </div>
@@ -219,21 +219,21 @@ export default function HomePage() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-primary-50">
+      <section className="py-14 bg-neutral-50">
         <div className="container-custom">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
             <div>
               <h2 className="section-title">Featured Products</h2>
               <p className="section-subtitle">
                 Handpicked pieces for the modern gentleman
               </p>
             </div>
-            <Link href="/shop" className="text-sm font-medium text-primary-900 hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/shop" className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors flex items-center gap-2">
               View All Products
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -242,10 +242,10 @@ export default function HomePage() {
       </section>
 
       {/* Brand Story CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative aspect-square bg-primary-100 overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="relative aspect-square bg-neutral-100 overflow-hidden">
               <Image
                 src="https://lambodarcreation.com/wp-content/uploads/2024/02/1ef2fbe2-image.png"
                 alt="Lambodar Creation brand story"
@@ -254,19 +254,19 @@ export default function HomePage() {
               />
             </div>
             <div>
-              <span className="text-accent text-sm font-medium tracking-widest uppercase">
+              <span className="text-brand-600 text-xs font-medium tracking-[0.2em] uppercase">
                 Our Story
               </span>
-              <h2 className="section-title mt-4">
+              <h2 className="section-title mt-3">
                 Quality You Can Trust
               </h2>
-              <p className="text-primary-600 mt-6 leading-relaxed">
+              <p className="text-neutral-500 mt-5 leading-relaxed">
                 Founded in December 2019, Lambodar Creation began as a passion project 
                 by three friends who dared to dream beyond their regular jobs. Despite 
                 the challenges of COVID-19, we emerged stronger, establishing ourselves 
                 as a trusted brand for fit-focused basics.
               </p>
-              <p className="text-primary-600 mt-4 leading-relaxed">
+              <p className="text-neutral-500 mt-4 leading-relaxed">
                 Over the past 5 years, we've served customers across India and beyond, 
                 known for our consistent quality and long-term customer relationships. 
                 Every piece we create reflects our commitment to excellence.
@@ -281,47 +281,45 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-primary-900 text-white">
+      <section className="py-14 bg-neutral-900 text-white">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-medium text-balance">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-serif font-medium">
               Our Happy Clients!
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-primary-800 p-8 rounded-sm"
+                className="bg-neutral-800 p-6 md:p-7 rounded-lg"
               >
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-0.5 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className={`w-4 h-4 ${
+                      className={`w-3.5 h-3.5 ${
                         i < Math.floor(testimonial.rating) 
-                          ? 'text-accent fill-accent' 
-                          : i < testimonial.rating 
-                            ? 'text-accent/50' 
-                            : 'text-primary-600'
+                          ? 'text-brand-400 fill-brand-400' 
+                          : 'text-neutral-600'
                       }`}
                     />
                   ))}
                 </div>
-                <p className="text-primary-200 text-sm leading-relaxed mb-6">
+                <p className="text-neutral-300 text-sm leading-relaxed mb-5">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-primary-700">
+                  <div className="w-10 h-10 rounded-full overflow-hidden bg-neutral-700">
                     <Image
                       src={testimonial.image}
                       alt={testimonial.name}
-                      width={48}
-                      height={48}
+                      width={40}
+                      height={40}
                       className="object-cover"
                     />
                   </div>
-                  <span className="font-medium">{testimonial.name}</span>
+                  <span className="font-medium text-sm">{testimonial.name}</span>
                 </div>
               </div>
             ))}
@@ -330,23 +328,23 @@ export default function HomePage() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-primary-50">
+      <section className="py-12 bg-neutral-50">
         <div className="container-custom">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-serif font-medium text-primary-900">
+          <div className="max-w-xl mx-auto text-center">
+            <h2 className="text-2xl font-serif font-medium text-neutral-900">
               Stay in Style
             </h2>
-            <p className="text-primary-600 mt-3">
+            <p className="text-neutral-500 mt-2 text-sm">
               Subscribe to get exclusive offers, new arrivals, and style tips.
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 mt-6 max-w-md mx-auto">
+            <form className="flex flex-col sm:flex-row gap-2 mt-5 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Your email address"
                 className="input-field flex-1"
                 required
               />
-              <button type="submit" className="btn-primary whitespace-nowrap">
+              <button type="submit" className="btn-accent whitespace-nowrap">
                 Subscribe
               </button>
             </form>

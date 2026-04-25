@@ -139,37 +139,35 @@ function ShopContent() {
   })
 
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-24 pb-16">
       <div className="container-custom">
-        {/* Header */}
-        <div className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-serif font-medium text-primary-900">
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-serif font-medium text-neutral-900">
             {selectedCategory 
               ? categories.find(c => c.slug === selectedCategory)?.name || 'Shop'
               : 'All Products'
             }
           </h1>
-          <p className="text-primary-600 mt-2">
+          <p className="text-neutral-500 mt-1.5 text-sm">
             {sortedProducts.length} products
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters - Desktop */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-28 space-y-8">
-              {/* Categories */}
+          <aside className="hidden lg:block w-56 flex-shrink-0">
+            <div className="sticky top-24 space-y-7">
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Categories</h3>
-                <div className="space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-3">Categories</h3>
+                <div className="space-y-0.5">
                   {categories.map((cat) => (
                     <button
                       key={cat.slug}
                       onClick={() => setSelectedCategory(cat.slug)}
-                      className={`block w-full text-left px-3 py-2 text-sm transition-colors ${
+                      className={`block w-full text-left px-3 py-2 text-sm transition-colors rounded ${
                         selectedCategory === cat.slug
-                          ? 'bg-primary-100 text-primary-900 font-medium'
-                          : 'text-primary-600 hover:bg-primary-50'
+                          ? 'bg-neutral-100 text-neutral-900 font-medium'
+                          : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                       }`}
                     >
                       {cat.name}
@@ -178,18 +176,17 @@ function ShopContent() {
                 </div>
               </div>
 
-              {/* Price Range */}
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Price Range</h3>
-                <div className="space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-800 mb-3">Price Range</h3>
+                <div className="space-y-0.5">
                   {priceRanges.map((range) => (
                     <button
                       key={range.name}
                       onClick={() => setSelectedPriceRange(range)}
-                      className={`block w-full text-left px-3 py-2 text-sm transition-colors ${
+                      className={`block w-full text-left px-3 py-2 text-sm transition-colors rounded ${
                         selectedPriceRange.name === range.name
-                          ? 'bg-primary-100 text-primary-900 font-medium'
-                          : 'text-primary-600 hover:bg-primary-50'
+                          ? 'bg-neutral-100 text-neutral-900 font-medium'
+                          : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                       }`}
                     >
                       {range.name}
@@ -203,7 +200,7 @@ function ShopContent() {
           {/* Main Content */}
           <div className="flex-1">
             {/* Toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-primary-100">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-neutral-100">
               <button
                 onClick={() => setShowFilters(!showFilters)}
                 className="lg:hidden flex items-center gap-2 text-sm font-medium"
@@ -215,7 +212,7 @@ function ShopContent() {
               <div className="flex flex-wrap items-center gap-4">
                 {/* Mobile Filters */}
                 {showFilters && (
-                  <div className="absolute lg:hidden top-full left-0 right-0 bg-white shadow-lg z-10 p-4 border-t border-primary-100">
+                  <div className="absolute lg:hidden top-full left-0 right-0 bg-white shadow-lg z-10 p-4 border-t border-neutral-100">
                     <div className="mb-4">
                       <h3 className="text-sm font-semibold uppercase tracking-wider mb-3">Categories</h3>
                       <div className="flex flex-wrap gap-2">
@@ -228,8 +225,8 @@ function ShopContent() {
                             }}
                             className={`px-3 py-1 text-sm border transition-colors ${
                               selectedCategory === cat.slug
-                                ? 'border-primary-900 bg-primary-900 text-white'
-                                : 'border-primary-200 hover:border-primary-900'
+                                ? 'border-neutral-900 bg-neutral-900 text-white'
+                                : 'border-neutral-200 hover:border-neutral-900'
                             }`}
                           >
                             {cat.name}
@@ -246,8 +243,8 @@ function ShopContent() {
                             onClick={() => setSelectedPriceRange(range)}
                             className={`px-3 py-1 text-sm border transition-colors ${
                               selectedPriceRange.name === range.name
-                                ? 'border-primary-900 bg-primary-900 text-white'
-                                : 'border-primary-200 hover:border-primary-900'
+                                ? 'border-neutral-900 bg-neutral-900 text-white'
+                                : 'border-neutral-200 hover:border-neutral-900'
                             }`}
                           >
                             {range.name}
@@ -267,7 +264,7 @@ function ShopContent() {
                     const option = sortOptions.find(o => o.value === e.target.value)
                     if (option) setSortBy(option)
                   }}
-                  className="appearance-none bg-white border border-primary-200 px-4 py-2 pr-10 text-sm focus:outline-none focus:border-primary-900"
+                  className="appearance-none bg-white border border-neutral-200 px-4 py-2 pr-10 text-sm focus:outline-none focus:border-neutral-900"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
